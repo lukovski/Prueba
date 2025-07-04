@@ -1,0 +1,246 @@
+[gd_scene load_steps=27 format=3 uid="uid://cw2xasrrro1o0"]
+
+[ext_resource type="Script" uid="uid://c2iam8mx8j81p" path="res://nivel_soto.gd" id="1_n6dft"]
+[ext_resource type="PackedScene" uid="uid://cdde6cofq3xh8" path="res://escenario_principal.tscn" id="1_tvqhn"]
+[ext_resource type="PackedScene" uid="uid://cok6d02gxxx3q" path="res://soto.tscn" id="2_n6dft"]
+[ext_resource type="PackedScene" uid="uid://kyuxx8bvemmx" path="res://personaje.tscn" id="3_kk1e5"]
+[ext_resource type="Script" uid="uid://dk7vn31i1nksd" path="res://hud.gd" id="4_7kk3m"]
+[ext_resource type="Script" uid="uid://bdx2mlvp7284u" path="res://texture_rect.gd" id="5_3ot86"]
+[ext_resource type="Texture2D" uid="uid://cewr6qex6887t" path="res://Imagenes/frames_pj.png" id="6_6pg7p"]
+
+[sub_resource type="Gradient" id="Gradient_ydtn4"]
+offsets = PackedFloat32Array(0, 0.307018, 1)
+colors = PackedColorArray(1, 1, 0.890196, 1, 1, 1, 0.905882, 0.756863, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_s48l2"]
+gradient = SubResource("Gradient_ydtn4")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv2ca"]
+atlas = ExtResource("6_6pg7p")
+region = Rect2(1, 202, 90, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s48l2"]
+atlas = ExtResource("6_6pg7p")
+region = Rect2(91, 202, 90, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpwqs"]
+atlas = ExtResource("6_6pg7p")
+region = Rect2(181, 202, 90, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afh24"]
+atlas = ExtResource("6_6pg7p")
+region = Rect2(271, 202, 90, 104)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_poccc"]
+atlas = ExtResource("6_6pg7p")
+region = Rect2(1, 103, 90, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_516i8"]
+atlas = ExtResource("6_6pg7p")
+region = Rect2(91, 103, 90, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lnvlo"]
+atlas = ExtResource("6_6pg7p")
+region = Rect2(181, 103, 90, 98)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtu3r"]
+atlas = ExtResource("6_6pg7p")
+region = Rect2(271, 103, 90, 98)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s48l2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hv2ca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s48l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpwqs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afh24")
+}],
+"loop": true,
+"name": &"Soto",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_poccc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_516i8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lnvlo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtu3r")
+}],
+"loop": true,
+"name": &"caraPj",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="Gradient" id="Gradient_hv2ca"]
+offsets = PackedFloat32Array(0.485714)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_afh24"]
+gradient = SubResource("Gradient_hv2ca")
+
+[sub_resource type="Gradient" id="Gradient_s48l2"]
+colors = PackedColorArray(0.909804, 0.117647, 0, 1, 0.909936, 6.257e-07, 1.34766e-06, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_516i8"]
+gradient = SubResource("Gradient_s48l2")
+metadata/_snap_count = 2
+
+[sub_resource type="Gradient" id="Gradient_qpwqs"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xtu3r"]
+gradient = SubResource("Gradient_qpwqs")
+
+[sub_resource type="Gradient" id="Gradient_afh24"]
+colors = PackedColorArray(1, 0.596078, 0.054902, 1, 1, 0.478431, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0m4yf"]
+gradient = SubResource("Gradient_afh24")
+
+[node name="NivelSoto" type="Node2D"]
+script = ExtResource("1_n6dft")
+
+[node name="EscenarioPrincipal" parent="." instance=ExtResource("1_tvqhn")]
+position = Vector2(-130, 35)
+
+[node name="soto" parent="." instance=ExtResource("2_n6dft")]
+position = Vector2(691, 448)
+collision_layer = 2
+
+[node name="personaje" parent="." instance=ExtResource("3_kk1e5")]
+unique_name_in_owner = true
+position = Vector2(191, 633)
+collision_layer = 2
+
+[node name="Hud" type="CanvasLayer" parent="."]
+script = ExtResource("4_7kk3m")
+
+[node name="TextureRect" type="TextureRect" parent="Hud"]
+offset_left = 916.0
+offset_top = 2.0
+offset_right = 1172.0
+offset_bottom = 919.0
+rotation = 1.5708
+texture = SubResource("GradientTexture1D_s48l2")
+script = ExtResource("5_3ot86")
+
+[node name="PlayerHud" type="Control" parent="Hud"]
+layout_mode = 3
+anchor_left = 0.00655022
+anchor_top = -0.00582242
+anchor_right = 0.105441
+anchor_bottom = 0.0407569
+offset_left = -5.0
+offset_top = 8.0
+offset_right = 300.416
+offset_bottom = 98.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Hud/PlayerHud"]
+layout_mode = 2
+anchor_left = 0.0631313
+anchor_top = -0.0425532
+anchor_right = 0.0631313
+anchor_bottom = -0.0425532
+offset_left = 105.0
+offset_top = 3.0
+offset_right = 168.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Rocco"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hud/PlayerHud"]
+position = Vector2(59, 64)
+scale = Vector2(1.34063, 1.28802)
+sprite_frames = SubResource("SpriteFrames_s48l2")
+animation = &"caraPj"
+flip_h = true
+
+[node name="Vida" type="TextureProgressBar" parent="Hud/PlayerHud"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 23.0
+offset_right = 346.0
+offset_bottom = 33.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_afh24")
+texture_progress = SubResource("GradientTexture2D_516i8")
+
+[node name="Stamina" type="TextureProgressBar" parent="Hud/PlayerHud"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 35.0
+offset_right = 286.0
+offset_bottom = 45.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture2D_xtu3r")
+texture_progress = SubResource("GradientTexture1D_0m4yf")
+
+[node name="RivalHud" type="Control" parent="Hud"]
+layout_mode = 3
+anchor_left = 0.045393
+anchor_right = 0.045393
+anchor_bottom = 0.0422125
+offset_left = 471.0
+offset_top = 4.0
+offset_right = 875.42
+offset_bottom = 94.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Hud/RivalHud"]
+layout_mode = 2
+anchor_left = -0.0855052
+anchor_top = -0.0420168
+anchor_right = -0.0855052
+anchor_bottom = -0.0420168
+offset_left = 245.0
+offset_top = 3.0
+offset_right = 308.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Soto"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Vida" type="TextureProgressBar" parent="Hud/RivalHud"]
+layout_mode = 0
+offset_left = 57.42
+offset_top = 23.0
+offset_right = 273.42
+offset_bottom = 33.0
+value = 100.0
+fill_mode = 1
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_afh24")
+texture_progress = SubResource("GradientTexture2D_516i8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hud/RivalHud"]
+position = Vector2(345.42, 66)
+scale = Vector2(1.34063, 1.28802)
+sprite_frames = SubResource("SpriteFrames_s48l2")
+animation = &"Soto"
+
+[connection signal="game_over_triggered" from="soto" to="." method="_on_soto_game_over_triggered"]
+[connection signal="game_over_triggered" from="personaje" to="." method="_on_personaje_game_over_triggered"]
